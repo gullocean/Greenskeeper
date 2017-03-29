@@ -42,13 +42,19 @@ get_header();
         'post_status'      => 'publish',
     );
 
-    $custom_posts = get_posts( $args );    
+    $custom_posts = get_posts( $args );
 
-    $testimonial_group = [
-        ['author' => 'testimonial1_author', 'location' => 'testimonial1_location', 'comment' => 'testimonial1_comment', 'photo' => 'testimonial1_photo'],
-        ['author' => 'testimonial2_author', 'location' => 'testimonial2_location', 'comment' => 'testimonial2_comment', 'photo' => 'testimonial2_photo'],
-        ['author' => 'testimonial3_author', 'location' => 'testimonial3_location', 'comment' => 'testimonial3_comment', 'photo' => 'testimonial3_photo']
-    ];
+    // Get recent our_work custom posts.
+    $news_args = array(
+        'numberposts'      => 3,
+        'orderby'          => 'date',
+        'order'            => 'DESC',
+        'post_type'        => 'our_news',
+        'post_status'      => 'publish',
+    );
+
+    $news_posts = get_posts( $news_args );
+
 ?>
     <!-- Start Hero Area -->
     <div class="hero-area">
@@ -200,78 +206,32 @@ get_header();
                     <div class="carousel-wrapper">
                         <div class="row">
                             <ul class="owl-carousel carousel-fw" id="blog-slider" data-columns="2" data-autoplay="" data-pagination="no" data-arrows="yes" data-single-item="no" data-items-desktop="2" data-items-desktop-small="2" data-items-tablet="1" data-items-mobile="1">
+                            <?php
+                            foreach ($news_posts as $news_post) {
+                                $news_image_src = wp_get_attachment_image_src( get_post_thumbnail_id($news_post->ID), 'thumbnail_size' );
+                            ?>
                                 <li class="item">
                                     <div class="blog-list-item format-standard">
                                         <div class="row">
                                             <div class="col-md-5 col-sm-5">
                                                 <a href="#" class="media-box">
-                                                    <img src="http://placehold.it/600x400&amp;text=IMAGE+PLACEHOLDER" alt="">
+                                                    <img src="<?php echo $news_image_src[0]; ?>" alt="">
                                                     <span class="date">
-                                                        <span class="day">05</span>
-                                                        <span class="month">Apr</span>
+                                                        <span><?php echo get_the_date(); ?></span>
                                                     </span>
                                                 </a>
-                                                <div class="blog-item-info">
-                                                	<a href="#" class="meta-data"><i class="fa fa-comments"></i> 10 Comments</a>
-                                                	<div class="meta-data"><i class="fa fa-tags"></i> <a href="#">Benefits</a>, <a href="#">How to</a></div>
-                                                </div>
                                             </div>
                                             <div class="col-md-7 col-sm-7">
-                                                <h4><a href="#">Time to stay with your family using our services</a></h4>
-                                                <p>Vestibulum quam nisi, pretium a nibh sit amet, consectetur hendrerit mi. Aenean imperdiet lacus sit amet elit porta...</p>
-                                                <a href="#" class="basic-link">Read more</a>
+                                                <h4><a href="<?php echo get_permalink($news_post->ID); ?>"><?php echo $news_post->post_title; ?></a></h4>
+                                                <p><?php echo substr($news_post->post_content, 0, 200); ?>...</p>
+                                                <a href="<?php echo get_permalink($news_post->ID); ?>" class="basic-link">Read More</a>
                                             </div>
                                         </div>
                                     </div>
                                 </li>
-                                <li class="item">
-                                    <div class="blog-list-item format-standard">
-                                        <div class="row">
-                                            <div class="col-md-5 col-sm-5">
-                                                <a href="#" class="media-box">
-                                                    <img src="http://placehold.it/600x400&amp;text=IMAGE+PLACEHOLDER" alt="">
-                                                    <span class="date">
-                                                        <span class="day">01</span>
-                                                        <span class="month">Apr</span>
-                                                    </span>
-                                                </a>
-                                                <div class="blog-item-info">
-                                                	<a href="#" class="meta-data"><i class="fa fa-comments"></i> 10 Comments</a>
-                                                	<div class="meta-data"><i class="fa fa-tags"></i> <a href="#">Tips</a>, <a href="#">Tricks</a></div>
-                                                </div>
-                                            </div>
-                                            <div class="col-md-7 col-sm-7">
-                                                <h4><a href="#">How to Care for your Lawn and Landscaping Before the Winter</a></h4>
-                                                <p>Vestibulum quam nisi, pretium a nibh sit amet, consectetur hendrerit mi. Aenean imperdiet lacus sit amet elit porta...</p>
-                                                <a href="#" class="basic-link">Read more</a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </li>
-                                <li class="item">
-                                    <div class="blog-list-item format-standard">
-                                        <div class="row">
-                                            <div class="col-md-5 col-sm-5">
-                                                <a href="#" class="media-box">
-                                                    <img src="http://placehold.it/800x533&amp;text=IMAGE+PLACEHOLDER" alt="">
-                                                    <span class="date">
-                                                        <span class="day">21</span>
-                                                        <span class="month">Mar</span>
-                                                    </span>
-                                                </a>
-                                                <div class="blog-item-info">
-                                                	<a href="#" class="meta-data"><i class="fa fa-comments"></i> 10 Comments</a>
-                                                	<div class="meta-data"><i class="fa fa-tags"></i> <a href="#">Tips</a>, <a href="#">Tricks</a></div>
-                                                </div>
-                                            </div>
-                                            <div class="col-md-7 col-sm-7">
-                                                <h4><a href="#">How to make your lawn &amp; landscape look it's best?</a></h4>
-                                                <p>Vestibulum quam nisi, pretium a nibh sit amet, consectetur hendrerit mi. Aenean imperdiet lacus sit amet elit porta...</p>
-                                                <a href="#" class="basic-link">Read more</a>
-                                            </div>
-                                        </div>
-                                     </div>
-                                </li>
+                            <?php
+                            }
+                            ?>
                             </ul>
                         </div>
                     </div>
@@ -294,17 +254,29 @@ get_header();
                         <div class="row">
                             <ul class="owl-carousel carousel-fw" id="testimonials-slider" data-columns="3" data-autoplay="" data-pagination="yes" data-arrows="no" data-single-item="no" data-items-desktop="3" data-items-desktop-small="2" data-items-tablet="1" data-items-mobile="1">
                                 <?php
-                                foreach ($testimonial_group as $item) {
+                                // Get recent testimonials custom posts.
+                                $testimonial_args = array(
+                                    'numberposts'      => -1,
+                                    'orderby'          => 'date',
+                                    'order'            => 'DESC',
+                                    'post_type'        => 'testimonials',
+                                    'post_status'      => 'publish',
+                                );
+
+                                $testimonial_posts = get_posts( $testimonial_args );
+
+                                foreach ($testimonial_posts as $item) {
+                                    $featured_image_src = wp_get_attachment_image_src( get_post_thumbnail_id($item->ID), 'thumbnail_size' );
                                 ?>
                                 <li class="item">
                                     <div class="testimonial-block">
                                         <blockquote>
-                                            <p><?php echo the_field($item['comment']); ?></p>
+                                            <p><?php echo $item->post_content; ?></p>
                                         </blockquote>
-                                        <div class="testimonial-avatar"><img src="<?php echo the_field($item['photo']); ?>" alt="" height="60" width="60"></div>
+                                        <div class="testimonial-avatar"><img src="<?php echo $featured_image_src[0]; ?>" alt="" height="60" width="60"></div>
                                         <div class="testimonial-info">
                                             <div class="testimonial-info-in">
-                                                <strong><?php echo the_field($item['author']); ?></strong><span><?php echo the_field($item['location']); ?></span>
+                                                <strong><?php echo $item->post_title; ?></strong><span><?php echo get_post_meta($item->ID, 'location', true); ?></span>
                                             </div>
                                         </div>
                                     </div>

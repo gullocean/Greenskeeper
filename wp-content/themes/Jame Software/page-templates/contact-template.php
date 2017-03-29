@@ -2,7 +2,13 @@
 /*
 Template Name: Contact Us
 */
-get_header(); ?>
+    get_header(); 
+?>
+
+<script type="text/javascript">
+    var templateUrl = "<?php echo get_template_directory_uri(); ?>";
+</script>
+
     <!-- Start Hero Area -->
     <div class="hero-area">
         <div class="page-header dark">
@@ -21,7 +27,7 @@ get_header(); ?>
                     <div class="col-lg-9 col-md-8 col-sm-7">
                         <h3>Get in touch</h3>
                         <p>We would be delighted to serve you with our services, just use the form below or choose the services you are interested in and we will be in touch with you in few hours. We’re available from Monday to Saturday, 06:00-18:00 to take your call.</p>
-                        <form method="post" id="contactform" name="contactform" class="contact-form clearfix" action="mail/contact.php">
+                        <form method="post" id="contactform" name="contactform" class="contact-form clearfix" action="<?php echo get_template_directory_uri(); ?>/mail/contact.php">
                             <div class="row">
                                 <div class="col-md-6 col-sm-6">
                                     <label>Your Name (required)</label>

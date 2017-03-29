@@ -51,11 +51,37 @@ function enqueue_scripts() {
 
 	// Add FlexSlider JS
 	wp_enqueue_script( 'flexslider', get_template_directory_uri() . '/vendor/flexslider/js/jquery.flexslider.js', array( 'jquery' ), '20170327', true );
+
+	if ( is_singular() && comments_open() && get_option( 'thread_comments' ) ) {
+		wp_enqueue_script( 'comment-reply' );
+	}
+
 }
 
 add_action( 'wp_enqueue_scripts', 'enqueue_scripts' );
 
-add_theme_support( 'post-thumbnails' );
+function greenskeeper_setup() {
+	add_theme_support( 'post-thumbnails' );
+
+	add_theme_support( 'html5', array(
+		'comment-form',
+		'comment-list',
+		'gallery',
+		'caption',
+	) );
+
+	// Add theme support for Custom Logo.
+	add_theme_support( 'custom-logo', array(
+		'width'       => 250,
+		'height'      => 250,
+		'flex-width'  => true,
+	) );
+
+	add_theme_support( 'title-tag' );
+
+}
+
+add_action( 'after_setup_theme', 'greenskeeper_setup' );
 
 /*
  * Get layout class from single page

@@ -15,9 +15,9 @@ var GREENSKEEPER = window.GREENSKEEPER || {};
 		
 			$("#message").slideUp(750,function() {
 			$('#message').hide();
-		
+
 			$('#submit')
-				.after('<img src="images/assets/ajax-loader.gif" class="loader" />')
+				.after('<img src="' + templateUrl + '/images/assets/ajax-loader.gif" class="loader" />')
 				.attr('disabled','disabled');
 		
 			$.post(action, {
@@ -55,7 +55,7 @@ var GREENSKEEPER = window.GREENSKEEPER || {};
 			$('#Quote-message').hide();
 		
 			$('#quote-submit')
-				.after('<img src="images/assets/ring.svg" class="loader" width="22px" height="22px" />')
+				.after('<img src="' + templateUrl + '/images/assets/ajax-loader.gif" class="loader" width="22px" height="22px" />')
 				.attr('disabled','disabled');
 		
 			$.post(action, {
@@ -91,7 +91,7 @@ var GREENSKEEPER = window.GREENSKEEPER || {};
 			$('#service-message').hide();
 		
 			$('#service-submit')
-				.after('<img src="images/assets/ajax-loader.gif" class="loader" />')
+				.after('<img src="' + templateUrl + '/images/assets/ajax-loader.gif" class="loader" />')
 				.attr('disabled','disabled');
 		
 			$.post(action, {
@@ -132,7 +132,7 @@ var GREENSKEEPER = window.GREENSKEEPER || {};
 			$('#question-message').hide();
 		
 			$('#question-submit')
-				.after('<img src="images/assets/ajax-loader.gif" class="loader" />')
+				.after('<img src="' + templateUrl + '/images/assets/ajax-loader.gif" class="loader" />')
 				.attr('disabled','disabled');
 		
 			$.post(action, {

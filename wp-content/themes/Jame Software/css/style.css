@@ -1763,7 +1763,6 @@ body.boxed .is-sticky .main-navigation{
 	padding:20px;
 	border: 1px solid #e6e6e6;
 	border-bottom: 2px solid #e6e6e6;
-	margin-top:50px;
 	-webkit-transition:all 0.3s ease 0.1s;
 	-moz-transition:all 0.3s ease 0.1s;
 	-ms-transition:all 0.3s ease 0.1s;
@@ -1927,7 +1926,7 @@ body.boxed .is-sticky .main-navigation{
 	top:0;
 	z-index:2;
 	color:#fff;
-	padding:22px 7px 7px;
+	padding:7px 7px 7px;
 	border-bottom:2px solid #fff;
 }
 .blog-grid-item{
