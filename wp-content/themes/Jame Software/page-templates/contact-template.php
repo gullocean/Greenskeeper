@@ -113,29 +113,29 @@ Template Name: Contact Us
                     <div class="col-md-3 col-sm-6">
                         <div class="feature-text">
                             <h2>Sales</h2>
-                            <p>John Bason</p>
-                            <a href="mailto:sales@greenskeeper.com">sales@greenskeeper.com</a>
+                            <p><?php echo the_field('sales'); ?></p>
+                            <a href="mailto:<?php echo the_field('sales_email'); ?>"><?php echo the_field('sales_email'); ?></a>
                         </div>
                     </div>
                     <div class="col-md-3 col-sm-6">
                         <div class="feature-text">
                             <h2>Services</h2>
-                            <p>Nicole Elmes</p>
-                            <a href="mailto:services@greenskeeper.com">services@greenskeeper.com</a>
+                            <p><?php echo the_field('services'); ?></p>
+                            <a href="mailto:<?php echo the_field('services_email'); ?>"><?php echo the_field('services_email'); ?></a>
                         </div>
                     </div>
                     <div class="col-md-3 col-sm-6">
                         <div class="feature-text">
                             <h2>Accounts</h2>
-                            <p>Christine Harvey</p>
-                            <a href="mailto:accounts@greenskeeper.com">accounts@greenskeeper.com</a>
+                            <p><?php echo the_field('accounts'); ?></p>
+                            <a href="mailto:<?php echo the_field('accounts_email'); ?>"><?php echo the_field('accounts_email'); ?></a>
                         </div>
                     </div>
                     <div class="col-md-3 col-sm-6">
                         <div class="feature-text">
                             <h2>Store</h2>
-                            <p>Nicholas Carter</p>
-                            <a href="mailto:store@greenskeeper.com">store@greenskeeper.com</a>
+                            <p><?php echo the_field('store'); ?></p>
+                            <a href="mailto:<?php echo the_field('store_email'); ?>"><?php echo the_field('store_email'); ?></a>
                         </div>
                     </div>
                 </div>

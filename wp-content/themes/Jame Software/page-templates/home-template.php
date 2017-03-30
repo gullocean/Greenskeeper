@@ -239,8 +239,8 @@ get_header();
             </div>
             <div class="parallax parallax1 parallax-light padding-tb75" style="background-image:url(<?php echo $featured_image_src[0]; ?>);">
             	<div class="text-align-center">
-                	<h2>We are your one stop location for all of<br>your outdoor needs,for both residential<br>and commercial properties.</h2>
-                   	<a href="/services" class="btn btn-default btn-ghost btn-light">Explore our services</a>
+                	<h2><?php echo get_post_meta(get_the_ID(), 'site_purpose_description', true); ?></h2>
+                   	<a href="/services" class="btn btn-default btn-ghost btn-light"><?php echo get_post_meta(get_the_ID(), 'explore_service_button_text', true); ?></a>
                 </div>
             </div>
             <div class="padding-tb75">
@@ -289,32 +289,6 @@ get_header();
                     </div>
                 </div>
            	</div>
-            <div class="padding-tb45 shadow-row parallax-light accent-bg counters" style="background-image:url(<?php echo get_template_directory_uri(); ?>/images/leaves1.png); background-repeat:repeat">
-                <div class="container">
-                    <div class="row">
-                        <div class="col-lg-3 col-md-3 col-sm-6 col-xs-6">
-                            <div class="fact-ico"> <i class="fa fa-tree fa-4x"></i> </div>
-                            <div class="timer" data-perc="1500"> <span class="count">6400</span> </div>
-                            <span class="fact">Trees Planted</span>
-                        </div>
-                        <div class="col-lg-3 col-md-3 col-sm-6 col-xs-6">
-                            <div class="fact-ico"> <i class="fa fa-users fa-4x"></i> </div>
-                            <div class="timer" data-perc="36"> <span class="count">36</span> </div>
-                            <span class="fact">Team Members</span>
-                        </div>
-                        <div class="col-lg-3 col-md-3 col-sm-6 col-xs-6">
-                            <div class="fact-ico"> <i class="fa fa-map-signs fa-4x"></i> </div>
-                            <div class="timer" data-perc="24"> <span class="count">24</span> </div>
-                            <span class="fact">Office Locations</span>
-                        </div>
-                        <div class="col-lg-3 col-md-3 col-sm-6 col-xs-6">
-                            <div class="fact-ico"> <i class="fa fa-hand-peace-o fa-4x"></i> </div>
-                            <div class="timer" data-perc="1000"> <span class="count">1000</span> </div>
-                            <span class="fact">Projects Completed</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
         </div>
    	</div>
 <?php

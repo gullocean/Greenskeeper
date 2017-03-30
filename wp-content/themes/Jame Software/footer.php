@@ -25,7 +25,7 @@
 	            	<div class="col-md-4 col-sm-6">
 	                	<div class="widget footer_widget">
 	                    	<h4 class="widgettitle"><i class="fa fa-calculator"></i> Request an Estimate</h4>
-	                        <form method="post" id="quoteform" name="quoteform" class="quick-quote clearfix" action="mail/quote.php">
+	                        <form method="post" id="quoteform" name="quoteform" class="quick-quote clearfix" action="<?php echo get_template_directory_uri(); ?>/mail/quote.php">
 	                            <input name="quote-name" id="quote-name" type="text" placeholder="Your Name" class="form-control">
 	                            <input name="quote-email" id="quote-email" type="email" placeholder="Your Email" class="form-control">
 	                            <select name="quote-service" id="quote-service" class="form-control selectpicker">
